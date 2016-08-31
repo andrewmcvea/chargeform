@@ -55,10 +55,11 @@ if __name__ == '__main__':
                 else:
                     other.append(dset)
 
-    h = get_times(g)
+    h = np.array(g)
+    times = get_times(h)
  
     if args.output:
-        np.savetext(args.output, h, header='time')
+        np.savetxt(args.output, times, header='time')
 
     plt.figure()
     plt.plot(g)

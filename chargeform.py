@@ -62,7 +62,7 @@ if __name__ == '__main__':
         np.savetxt(args.output, times, header='time')
 
     plt.figure()
-    plt.plot(g)
+    plt.plot(h)
     plt.title('Channel 2')
 
     plt.show()

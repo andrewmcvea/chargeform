@@ -47,24 +47,20 @@ if __name__ == '__main__':
     other = []
     for filename in args.filenames:
         with h5py.File(filename) as f:
+            plt.figure()
+            plt.title('Channel 2')
             for i in range(100000):
                 dset = f['c2'][i]
                 if find_charge(dset) < .01:
-		    g.append(dset)
-                   # h.append(get_times(dset, -10))
+                    g.append(dset)
+                    plt.plot(dset)
                 else:
                     other.append(dset)
 
     h = np.array(g)
     times = get_times(h)
- 
+
     if args.output:
         np.savetxt(args.output, times, header='time')
 
-    plt.figure()
-    plt.plot(h)
-    plt.title('Channel 2')
-
     plt.show()
-
-
